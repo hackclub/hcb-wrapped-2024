@@ -71,7 +71,7 @@ const OnePager = React.forwardRef((props, ref) => {
               src="https://cloud-jlacrfopp-hack-club-bot.vercel.app/00bank_wrapped.png"
               height="36px"
             />
-            Wrapped 2023 (by Hack Club)
+            Wrapped 2024 (by Hack Club)
           </h1>
         </div>
         <div

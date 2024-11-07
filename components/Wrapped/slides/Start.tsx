@@ -114,7 +114,7 @@ export default function Start({ data, isPaused }: SlideProps) {
       }}
     >
       <h2 {...$.title({ animate$fadeIn: [], marginBottom: $.s3 })}>🏦 🎁 🎉</h2>
-      <h1 {...$.title({ animate$fadeIn: [] })}>Wrapped 2023</h1>
+      <h1 {...$.title({ animate$fadeIn: [] })}>Wrapped 2024</h1>
       <p
         {...$.lead({
           animate$fadeIn: {
@@ -126,7 +126,7 @@ export default function Start({ data, isPaused }: SlideProps) {
           marginBottom: $.s1
         })}
       >
-        Welcome {firstName}; 2023 was a big year on HCB for you.{" "}
+        Welcome {firstName}; 2024 was a big year on HCB for you.{" "}
         {spentNothing ? (
           <>
             <br />

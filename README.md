@@ -1,6 +1,6 @@
-# `@hackclub/hcb-wrapped-2023`
+# `@hackclub/hcb-wrapped-2024`
 
-This repository houses the React component that will be used to generate this year's [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped). It also contains a Next.js site used for testing (currently deployed at [hcb-wrapped-2023.hackclub.dev](https://hcb-wrapped-2023.hackclub.dev)).
+This repository houses the React component that will be used to generate this year's [hcb.hackclub.com/wrapped](https://hcb.hackclub.com/wrapped). It also contains a Next.js site used for testing (currently deployed at [hcb-wrapped-2024.hackclub.dev](https://hcb-wrapped-2024.hackclub.dev)).
 
 ## Directory
 
@@ -14,7 +14,7 @@ This repository houses the React component that will be used to generate this ye
 
 We'd love you help making HCB Wrapped incredible! We plan to launch Wrapped on the 18th of December. To make that happen, we've got to design a dozen or so "slides" by December 15th. Each slide will feature different pieces of data about how the user used HCB over the past year.
 
-Everything we have in mind is mapped out in [#1](https://github.com/hackclub/hcb-wrapped-2023/issues/1). If something peaks your interest, feel free to self-assign it! If you have an idea for a slide that isn't listed, feel free to open an issue. We'll discuss what you have in mind, and if it's a good fit, we'll add it to the list!
+Everything we have in mind is mapped out in [#1](https://github.com/hackclub/hcb-wrapped-2024/issues/1). If something peaks your interest, feel free to self-assign it! If you have an idea for a slide that isn't listed, feel free to open an issue. We'll discuss what you have in mind, and if it's a good fit, we'll add it to the list!
 
 When it comes to testing data, you've got two options:
 

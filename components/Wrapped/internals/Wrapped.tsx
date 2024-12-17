@@ -433,9 +433,9 @@ table {
 @font-face {
     font-family: "Phantom Sans";
     src:
-        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff")
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Regular.woff")
             format("woff"),
-        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff2")
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Regular.woff2")
             format("woff2");
     font-weight: normal;
     font-style: normal;
@@ -444,9 +444,9 @@ table {
 @font-face {
     font-family: "Phantom Sans";
     src:
-        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Italic.woff")
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Italic.woff")
             format("woff"),
-        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Italic.woff2")
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Italic.woff2")
             format("woff2");
     font-weight: normal;
     font-style: italic;
@@ -455,11 +455,45 @@ table {
 @font-face {
     font-family: "Phantom Sans";
     src:
-        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff")
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Bold.woff")
             format("woff"),
-        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff2")
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Bold.woff2")
             format("woff2");
     font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Phantom Sans";
+    src:
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Book.woff")
+            format("woff"),
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Book.woff2")
+            format("woff2");
+    font-weight: 450;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Phantom Sans";
+    src:
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Medium.woff")
+            format("woff"),
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Medium.woff2")
+            format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Phantom Sans";
+    src:
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Semibold.woff")
+            format("woff"),
+        url("https://assets.hackclub.com/fonts/Phantom_Sans_0.8/Semibold.woff2")
+            format("woff2");
+    font-weight: 600;
     font-style: normal;
     font-display: swap;
 }
@@ -1241,7 +1275,7 @@ td {
 }
 
 .grid-item {
-   border: 0.2px solid #222;
+   border: 0.2px solid #ffffff99;
    border-radius: 1px;
    padding-left: 0px!important;
    padding-right: 0px!important;

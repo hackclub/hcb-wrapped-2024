@@ -58,6 +58,10 @@ export interface IndividualData {
     words: string[];
     spendingByCategory: SpendingByCategory;
     spendingByMerchant: SpendingByMerchant;
+    cardGrantCount: number;
+    cardGrantAmount: number;
+    reimbursementCount: number;
+    reimbursementAmount: number;
 }
 
 export interface OrgData {

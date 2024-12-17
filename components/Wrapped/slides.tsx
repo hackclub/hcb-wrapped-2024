@@ -1,3 +1,4 @@
+import shuffle from "fast-shuffle";
 import React from "react";
 import $ from "./utils/theme";
 import HCB from "./slides/HCB";
@@ -15,6 +16,18 @@ import Ending from "./slides/Ending";
 import HCBSection from "./slides/HCBSection";
 import type { WrappedData, OrgData } from "./utils/data";
 import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
+import CardGrants from "./slides/CardGrants";
+import Reimbursements from "./slides/Reimbursements";
+
+function deterministicShuffle(seed: string, array: any[]) {
+  let intSeed = 0;
+  for (let i = 0; i < seed.length; i++) {
+    intSeed += seed.charCodeAt(i);
+  }
+
+  const shuffler = shuffle(intSeed);
+  return shuffler(array);
+}
 
 export const isEmpty = (obj: Object) => Object.keys(obj).length === 0;
 export const isNotEmpty = (obj: Object) => !isEmpty(obj);
@@ -57,8 +70,9 @@ export function generateSlidesOrder(data: WrappedData) {
             />
           );
         }
+        const color = deterministicShuffle(org, [$.blue, $.red, $.green, $.purple])[0];
         OrgSlide.config = {
-          bgPattern: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c0b8cd' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E")`,
+          bgPattern: `linear-gradient(130deg, ${color}11 40%, ${color}33 70%, ${color}bb 100%)`,
           duration: 10000,
           cache: (data) => [getOrgImage(data.organizations[org])]
         } satisfies SlideOptions;
@@ -81,8 +95,9 @@ export function generateSlidesOrder(data: WrappedData) {
     Start,
     Spender,
     ByDate,
-    PlatinumCardSlide,
+    CardGrants,
     Receipts,
+    Reimbursements,
     WordCloud,
     Hometown,
     ...orgSlides,

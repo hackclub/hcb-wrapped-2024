@@ -1,6 +1,6 @@
 import { WrappedData } from "../utils/data";
 import $ from "../utils/theme";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { generateSlidesOrder } from "../slides";
 import Stories from "react-insta-stories";
 import { Action, Story } from "react-insta-stories/dist/interfaces";
@@ -54,9 +54,9 @@ export default function Slides({ data }: { data: WrappedData }) {
     setIndex((i) => i + 1);
   }, [setIndex]);
 
-  const slides = generateSlidesOrder(data).filter(
+  const slides = useMemo(() => generateSlidesOrder(data).filter(
     ({ config }: WrappedSlide) => !config?.skipSlide?.(data)
-  );
+  ), [data]);
 
   const [_, convert, ref] = useToPng<HTMLDivElement>({
     quality: 0.8, //@ts-ignore

@@ -8,7 +8,7 @@ import { USDollarNoCents } from "../utils/formatter";
 import HCBStat from "../components/HCBStat";
 import Background from "../components/Background";
 import shuffle from "fast-shuffle";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function findMonthWithMaxAbsoluteSum(data: SpendingByDate) {
   let monthSums: { [key: string]: number } = {};
@@ -48,7 +48,10 @@ export default function OrgDetails({
   organization: OrgData & { name: string };
   position: number;
 }) {
-  let location = Object.keys(
+  const wrapperRef = useRef();
+  const otherRef = useRef();
+
+    let location = Object.keys(
     Object.entries(organization.spendingByLocation)
       .sort(([, a], [, b]) => b - a)
       .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
@@ -97,73 +100,94 @@ export default function OrgDetails({
   const zeroOrOne = position % 2;
 
   const gridItems: GridItem[] = [
-    (edges, rand, i) => (
-      <HCBStat
-        key="top-merchant"
-        data={
-          Object.keys(
-            Object.entries(organization.spendingByMerchant)
-              .sort(([, a], [, b]) => b - a)
-              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-          )[0]
+    (edges, rand, i) => {
+      let maxKey = null;
+      let maxValue = -Infinity;
+
+      for (const [key, value] of Object.entries(organization.spendingByMerchant)) {
+        if (value > maxValue) {
+          maxValue = value;
+          maxKey = key;
         }
-        label={copy.merchant[position](
-          USDollarNoCents.format(
-            Math.abs(
-              (Object.values(
-                Object.entries(organization.spendingByMerchant)
-                  .sort(([, a], [, b]) => b - a)
-                  .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0] as number) / 100
-            )
-          )
-        )}
-        background={shuffledBackgrounds[0]}
-        style$={{
-          animate$fadeIn: {
-            args: edges.includes("bottom")
-              ? ["fromBottom"]
-              : [i % 2 == zeroOrOne ? "fromRight" : "fromLeft"],
-            duration: "1s",
-            delay: "150ms"
+      }
+
+
+      return (
+        <HCBStat
+          key="top-merchant"
+          data={
+            // Object.keys(
+            //   Object.entries(organization.spendingByMerchant)
+            //     .sort(([, a], [, b]) => b - a)
+            //     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+            // )[0]
+            maxKey
           }
-        }}
-      />
-    ),
-    (edges, rand, i) => (
-      <HCBStat
-        key="top-category"
-        topLabel={copy.categoryTop[position]()}
-        data={prettifyCategory(
-          Object.keys(
-            Object.entries(organization.spendingByCategory)
-              .sort(([, a], [, b]) => b - a)
-              .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-          )[0]
-        )}
-        label={copy.categoryBottom[position](
-          USDollarNoCents.format(
-            Math.abs(
-              (Object.values(
-                Object.entries(organization.spendingByCategory)
-                  .sort(([, a], [, b]) => b - a)
-                  .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0] as number) / 100
+          label={copy.merchant[position](
+            USDollarNoCents.format(
+              Math.abs(
+                (maxValue as number) / 100
+              )
             )
-          )
-        )}
-        background={shuffledBackgrounds[1]}
-        style$={{
-          animate$fadeIn: {
-            args: edges.includes("bottom")
-              ? ["fromBottom"]
-              : [i % 2 == zeroOrOne ? "fromRight" : "fromLeft"],
-            duration: "1s",
-            delay: "150ms"
-          }
-        }}
-      />
-    ),
+          )}
+          dataStyle={{
+            fontSize: "36px"
+          }}
+          background={shuffledBackgrounds[0]}
+          style$={{
+            animate$fadeIn: {
+              args: edges.includes("bottom")
+                ? ["fromBottom"]
+                : [i % 2 == zeroOrOne ? "fromRight" : "fromLeft"],
+              duration: "1s",
+              delay: "150ms"
+            }
+          }}
+        />
+      )
+    },
+    (edges, rand, i) => {
+      let maxKey = null;
+      let maxValue = -Infinity;
+
+      for (const [key, value] of Object.entries(organization.spendingByCategory)) {
+        if (value > maxValue) {
+          maxValue = value;
+          maxKey = key;
+        }
+      }
+      return (
+        <HCBStat
+          key="top-category"
+          topLabel={copy.categoryTop[position]()}
+          data={prettifyCategory(
+            maxKey
+          )}
+          label={copy.categoryBottom[position](
+            USDollarNoCents.format(
+              Math.abs(
+                (maxValue as number) / 100
+              )
+            )
+          )}
+          dataStyle={{
+            fontSize: "36px"
+          }}
+
+          background={shuffledBackgrounds[1]}
+          style$={{
+            animate$fadeIn: {
+              args: edges.includes("bottom")
+                ? ["fromBottom"]
+                : [i % 2 == zeroOrOne ? "fromRight" : "fromLeft"],
+              duration: "1s",
+              delay: "150ms"
+            },
+            display: organization.name.length > 20 ? "none" : "flex"
+          }}
+        />
+      )
+    },
     (edges, rand, i) => (
       <div
         key="top-month"
@@ -175,11 +199,10 @@ export default function OrgDetails({
         }}
       >
         <HCBStat
-          data={copy.month[position](
-            findMonthWithMaxAbsoluteSum(organization.spendingByDate)
-          )}
+          data={findMonthWithMaxAbsoluteSum(organization.spendingByDate)}
+          topLabel="Your team spent the most in"
           background={shuffledBackgrounds[2]}
-          fontSize={"1.3em"}
+          fontSize={"1.7em"}
           style$={{
             animate$fadeIn: {
               args:
@@ -276,49 +299,47 @@ export default function OrgDetails({
     organization.name,
     gridItems
   );
-  const shuffledGridItems = shuffledGridFunctions.map((item, i) => {
+  const shuffledGridItems = gridItems.map((item, i) => {
     const edges = [];
     if (i == 0) edges.push("top");
     if (i == shuffledGridFunctions.length - 1) edges.push("bottom");
-    return item(edges, Math.random(), i);
+    return item(edges, deterministicShuffle((i * 73) + "", [0, 1])[0], i);
   });
 
   return (
-    <div
-      {...$({
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100%",
-        paddingBottom: "80px",
-        color: "black",
-        textAlign: "center",
-        gap: 10,
-        width: "100%"
-      })}
-    >
-      <h1
-        {...$.title({
-          width: "100%",
-          marginTop: "24px",
-          color: "white",
-          marginBottom: $.s2,
-          animate$fadeIn: {
-            args:
-              position == 0
-                ? ["fromLeft"]
-                : position == 1
-                  ? ["fromTop"]
-                  : ["fromRight"],
-            duration: "1500ms"
-          }
+      <div ref={wrapperRef}
+        {...$({
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          color: "black",
+          textAlign: "center",
+          gap: 10,
+          width: "100%"
         })}
       >
-        {organization.name}
-      </h1>
-      {shuffledGridItems}
-      <Background />
-    </div>
+        <h1
+          {...$.title({
+            width: "100%",
+            color: "white",
+            marginBottom: $.s2,
+            animate$fadeIn: {
+              args:
+                position == 0
+                  ? ["fromLeft"]
+                  : position == 1
+                    ? ["fromTop"]
+                    : ["fromRight"],
+              duration: "1000ms"
+            }
+          })}
+        >
+          {organization.name}
+        </h1>
+        {shuffledGridItems}
+        <Background />
+      </div>
   );
 }

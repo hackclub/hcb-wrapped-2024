@@ -1,5 +1,5 @@
 import $, { StyleProps } from "../utils/theme";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import CountUp from "react-countup";
 
 export default function HCBStat({
@@ -10,7 +10,10 @@ export default function HCBStat({
   isNumber = false,
   fontSize = "",
   prefix = "",
-  style$
+  style$,
+  dataStyle = {},
+  lineClamp,
+  setHeight
 }: {
   data: string | number;
   label?: string;
@@ -20,9 +23,19 @@ export default function HCBStat({
   fontSize?: string;
   prefix?: string;
   style$?: StyleProps;
+  dataStyle?: StyleProps;
+  lineClamp?: number;
+  setHeight?: (height: number) => void;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (setHeight) {
+      setHeight(ref.current?.clientHeight || 0);
+    }
+  }, [ref.current?.clientHeight]);;
   return (
     <div
+      ref={ref}
       {...$({
         background: background || $.sunken,
         borderRadius: "12px",
@@ -41,8 +54,8 @@ export default function HCBStat({
         <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
           <b
             {...$({
-              fontSize: "0.7em",
-              fontWeight: 800
+              fontSize: "0.9em",
+              fontWeight: 500
             })}
           >
             {topLabel}
@@ -61,7 +74,16 @@ export default function HCBStat({
           {...$.title({
             fontWeight: 800,
             fontSize,
-            overflowWrap: "anywhere"
+            overflowWrap: "anywhere",
+            ...dataStyle,
+            ...(lineClamp ? { 
+              
+                overflow: "hidden",
+                display: "-webkit-box",
+                WebkitLineClamp: lineClamp,
+                lineClamp: lineClamp,
+                WebkitBoxOrient: "vertical",
+             } : {})
           })}
         >
           {data}
@@ -71,8 +93,8 @@ export default function HCBStat({
         <div {...$({ display: "flex", alignItems: "center", gap: "4px" })}>
           <b
             {...$({
-              fontSize: "0.7em",
-              fontWeight: 800
+              fontSize: "0.9em",
+              fontWeight: 500
             })}
           >
             {label}

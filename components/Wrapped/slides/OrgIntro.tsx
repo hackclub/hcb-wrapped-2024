@@ -66,6 +66,6 @@ export default function OrgIntro({ data }: SlideProps) {
 }
 
 OrgIntro.config = {
-  bg: $.blue,
+  bg: $.purple,
   duration: 8_000
 } satisfies SlideOptions;

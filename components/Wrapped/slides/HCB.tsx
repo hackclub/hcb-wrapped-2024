@@ -21,7 +21,7 @@ export default function HCB({ data }: SlideProps) {
         <h1
           {...$.headline({ fontSize: "2em", marginTop: "0px", color: "white" })}
         >
-          That's a wrap; what a year.
+          That's a wrap!
         </h1>
         <div
           {...$({
@@ -31,27 +31,6 @@ export default function HCB({ data }: SlideProps) {
             width: "100%"
           })}
         >
-          <div
-            {...$({
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: "16px",
-              width: "100%"
-            })}
-          >
-            <HCBStat
-              data={data.hcb.organizations.new}
-              label="new organizations"
-              background={$.yellow}
-              isNumber
-            />
-            <HCBStat
-              data={data.hcb.users.new}
-              label="new users"
-              background={$.cyan}
-              isNumber
-            />
-          </div>
           <HCBStat
             data={Math.abs(data.hcb.spent / 100)}
             label="spent by organizations"
@@ -60,7 +39,7 @@ export default function HCB({ data }: SlideProps) {
             prefix="$"
           />
           <HCBStat
-            data={3_370_711.34}
+            data={Math.abs(data.hcb.raised / 100)}
             label="raised on HCB"
             background={$.orange}
             isNumber
@@ -84,6 +63,27 @@ export default function HCB({ data }: SlideProps) {
               Popular spending locations
             </span>
           </div>
+          <div
+            {...$({
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "16px",
+              width: "100%"
+            })}
+          >
+            <HCBStat
+              data={data.hcb.organizations.new}
+              label="new organizations"
+              background={$.yellow}
+              isNumber
+            />
+            <HCBStat
+              data={data.hcb.users.new}
+              label="new users"
+              background={$.cyan}
+              isNumber
+            />
+          </div>
         </div>
         <div
           {...$({
@@ -95,8 +95,7 @@ export default function HCB({ data }: SlideProps) {
             textAlign: "center"
           })}
         >
-          All this... plus surviving two bank collapses and rebranding (
-          <i>what's Bank?</i>).
+          These stats omit Hack Club HQ's spending and fundraising.
         </div>
         <Background />
       </div>
@@ -105,7 +104,7 @@ export default function HCB({ data }: SlideProps) {
 }
 
 HCB.config = {
-  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg)`,
+  bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-m82c27qbt-hack-club-bot.vercel.app/0img_4077.jpg)`,
   cache: (data) => [
     "https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png",
     "https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg"

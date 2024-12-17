@@ -16,16 +16,18 @@ export default function Spender({ data }: SlideProps) {
 
   return (
     <>
-      <h2 {...$.title({ marginBottom: $.s3 })}>💳</h2>
-      <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.6em" })}>
-        Look at you big spender! You spent $
-        <CountUp end={Math.abs(data.individual.totalMoneySpent / 100)} /> this
+      <h2 {...$.title({ marginBottom: $.s3, marginTop: "-20px" })}>💳</h2>
+      <h1 {...$.title({ marginBottom: $.s4, fontSize: "2.6em", color: $.white })}>
+        Look at you big spender! You spent{' '}
+        <span {...$({ color: "#fcbec5" })}>$
+        <CountUp end={Math.abs(data.individual.totalMoneySpent / 100)} />
+        </span>{' '}this
         year.
       </h1>
 
       <div {...$({ display: "flex", gap: 10, flexDirection: "column" })}>
         <HCBStat
-          topLabel={`By spending ${USDollarNoCents.format(
+          topLabel={`You spent ${USDollarNoCents.format(
             Math.abs(
               (Object.values(
                 Object.entries(data.individual.spendingByMerchant)
@@ -33,7 +35,7 @@ export default function Spender({ data }: SlideProps) {
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
               )[0] as number) / 100
             )
-          )}, you kept`}
+          )} at`}
           data={
             Object.keys(
               Object.entries(data.individual.spendingByMerchant)
@@ -41,12 +43,19 @@ export default function Spender({ data }: SlideProps) {
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
             )[0]
           }
-          label="in business this year."
-          background={$.orange}
+          label="They were your top merchant this year"
+          background={$.green}
           style$={{
             animate$fadeIn: {
               args: ["fromBottom"]
-            }
+            },
+            color: "#000000bb"
+          }}
+          dataStyle={{
+            minHeight: "140px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         />
         <HCBStat
@@ -67,12 +76,13 @@ export default function Spender({ data }: SlideProps) {
               )[0] as number) / 100
             )
           )} with them.`}
-          background={$.blue}
+          background={$.purple}
           style$={{
             animate$fadeIn: {
               args: ["fromBottom"],
               delay: "150ms"
-            }
+            },
+            color: "#ffffffcc"
           }}
         />
         {data.individual.ranking <= 0.07 ? ( // Top 7% of spenders
@@ -80,12 +90,13 @@ export default function Spender({ data }: SlideProps) {
             topLabel="Congrats! You're one of the top"
             data={ranking + "%"}
             label="of spenders!"
-            background={$.green}
+            background={$.cyan}
             style$={{
               animate$fadeIn: {
                 args: ["fromBottom"],
                 delay: "300ms"
-              }
+              },
+              color: "#000000bb"
             }}
           />
         ) : (
@@ -93,12 +104,13 @@ export default function Spender({ data }: SlideProps) {
             topLabel="You spent more than"
             data={percentile + "%"}
             label="of other HCB users!"
-            background={$.green}
+            background={$.cyan}
             style$={{
               animate$fadeIn: {
                 args: ["fromBottom"],
                 delay: "300ms"
-              }
+              },
+              color: "#000000bb"
             }}
           />
         )}

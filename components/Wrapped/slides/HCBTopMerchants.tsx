@@ -16,7 +16,8 @@ const additionalData: {
   PAYPAL: {
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/PayPal_Logo_Icon_2014.svg/1664px-PayPal_Logo_Icon_2014.svg.png",
-    color: $.blue
+    color: $.blue,
+    name: "PayPal"
   },
   AMAZON: {
     image: "https://wisdom-stone.com/wp-content/uploads/amazon-logo.png",
@@ -25,7 +26,8 @@ const additionalData: {
   "STICKER MULE": {
     image:
       "https://cdn.icon-icons.com/icons2/2699/PNG/512/stickermule_logo_icon_169715.png",
-    color: $.stickermule
+    color: $.stickermule,
+    name: "Sticker Mule"
   },
   "FIRST FOR INSPIRATION & R": {
     image: "https://cloud-6ik9jo5u6-hack-club-bot.vercel.app/0image.png",
@@ -35,6 +37,16 @@ const additionalData: {
   REVROBOTICS: {
     image: "https://cloud-161bscnw9-hack-club-bot.vercel.app/0image.png",
     color: $.orange
+  },
+  GOBILDA: {
+    image: "https://cloud-m4ohq90s7-hack-club-bot.vercel.app/0image_1__4_.png",
+    color: $.yellow,
+    name: "goBILDA"
+  },
+  "ANDY MARK INC": {
+    image: "https://cloud-ci8kpp8oi-hack-club-bot.vercel.app/0image_2__5_.png",
+    color: "#2E3192",
+    name: "AndyMark"
   }
 };
 
@@ -153,10 +165,45 @@ export default function HCBTopMerchants({ data }: SlideProps) {
           {Object.entries({
             ...data.hcb.spendingByMerchant,
             AMAZON:
+              data.hcb.spendingByMerchant["AMAZON"] +
+              data.hcb.spendingByMerchant["AMAZON AU"] +
+              data.hcb.spendingByMerchant["AMAZON.CA"] +
+              data.hcb.spendingByMerchant["AMAZON MAR"] +
+              data.hcb.spendingByMerchant["AMAZON RET"] +
+              data.hcb.spendingByMerchant["AMAZON.COM"] +
+              data.hcb.spendingByMerchant["AMAZON MARK"] +
+              data.hcb.spendingByMerchant["AMAZON RETA"] +
+              data.hcb.spendingByMerchant["AMAZON TIPS"] +
+              data.hcb.spendingByMerchant["AMAZON GROCE"] +
+              data.hcb.spendingByMerchant["AMAZON MKTPL"] +
+              data.hcb.spendingByMerchant["AMAZON PRIME"] +
+              data.hcb.spendingByMerchant["AMZN DIGITAL"] +
+              data.hcb.spendingByMerchant["AMZN MKTP CA"] +
+              data.hcb.spendingByMerchant["AMZN MKTP DE"] +
               data.hcb.spendingByMerchant["AMZN MKTP US"] +
-              data.hcb.spendingByMerchant["AMAZON.COM"],
+              data.hcb.spendingByMerchant["AMZNMKTPLACE"] +
+              data.hcb.spendingByMerchant["AMAZON MARKETPLACE"] +
+              data.hcb.spendingByMerchant["AMAZON MARKETPLACE AU"] +
+              data.hcb.spendingByMerchant["AMAZON.CA PRIME MEMBER"],
+            "AMAZON AU": 0,
+            "AMAZON.CA": 0,
+            "AMAZON MAR": 0,
+            "AMAZON RET": 0,
+            "AMAZON.COM": 0,
+            "AMAZON MARK": 0,
+            "AMAZON RETA": 0,
+            "AMAZON TIPS": 0,
+            "AMAZON GROCE": 0,
+            "AMAZON MKTPL": 0,
+            "AMAZON PRIME": 0,
+            "AMZN DIGITAL": 0,
+            "AMZN MKTP CA": 0,
+            "AMZN MKTP DE": 0,
             "AMZN MKTP US": 0,
-            "AMAZON.COM": 0
+            "AMZNMKTPLACE": 0,
+            "AMAZON MARKETPLACE": 0,
+            "AMAZON MARKETPLACE AU": 0,
+            "AMAZON.CA PRIME MEMBER": 0,
           })
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5)
@@ -190,7 +237,7 @@ export default function HCBTopMerchants({ data }: SlideProps) {
                 />
                 <div style={{ padding: "12px", color: $.white }}>
                   <b>
-                    {title(additionalData[merchant[0]]?.name || merchant[0])}
+                    {additionalData[merchant[0]]?.name || title(merchant[0])}
                   </b>
                   <br /> {USDollarNoCents.format(merchant[1] / 100)}
                 </div>
@@ -218,6 +265,6 @@ export default function HCBTopMerchants({ data }: SlideProps) {
 }
 
 HCBTopMerchants.config = {
-  bg: $.purple,
+  bg: $.green + "99",
   duration: 15_000
 } satisfies SlideOptions;

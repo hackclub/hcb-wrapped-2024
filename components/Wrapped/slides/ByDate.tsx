@@ -6,6 +6,7 @@ import Background from "../components/Background";
 import HCBStat from "../components/HCBStat";
 import CountUp from "react-countup";
 import { prettifyCategory } from "./HCBTopMerchants";
+const longestConsecutiveDates = (dates) => Math.max(...dates.sort((a, b) => new Date(a) - new Date(b)).reduce((acc, curr, i, arr) => (i > 0 && new Date(curr) - new Date(arr[i - 1]) === 86400000 ? acc[acc.length - 1]++ : acc.push(1), acc), []));
 
 const shape = [
   {
@@ -83,6 +84,7 @@ export function Content({
     <>
       <div
         style={{
+          color: $.white,
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr 1fr",
           gap: "12px"
@@ -95,7 +97,7 @@ export function Content({
             .reduce((a, b) => a + b, 0);
           return (
             <div key={month.month}>
-              <b style={{ marginBottom: "8px" }}>{month.month}</b>
+              <b style={{ marginBottom: "8px", color: $.smoke }}>{month.month}</b>
               <div className="grid-container mb3">
                 {[...Array(month.start)].map((_, buffer) => (
                   <div
@@ -106,7 +108,7 @@ export function Content({
                 {[...Array(month.length)].map((_, x) => {
                   const entry = changeByDate[passed + x][1];
                   const label = changeByDate[passed + x][0];
-                  const bg = `rgba(255, 0, 0, ${
+                  const bg = `rgba(255, 73, 98, ${
                     Math.log(entry) / Math.log(max)
                   })`;
                   return (
@@ -134,7 +136,7 @@ export function Content({
         })}
       </div>
       {!onePager && (
-        <p>
+        <p style={{ color: $.white }}>
           Your spending on{" "}
           {maxDate.toLocaleDateString("en-us", {
             day: "numeric",
@@ -158,12 +160,14 @@ export default function ByDate({ data }: SlideProps) {
     >
       <h1
         {...$.title({
-          marginBottom: $.s2,
+          marginBottom: $.s4,
           marginTop: "-32px",
-          fontSize: "2.8em"
+          fontSize: "2.8em",
+          fontWeight: 500,
+          color: $.white
         })}
       >
-        You painted the town red.
+        You went on a shopping spree with a <strong {...$({ color: $.red })}>{longestConsecutiveDates(Object.entries(data.individual.spendingByDate).filter(([k, v]) => v > 0).map(([k]) => k))} day</strong> spending streak!
       </h1>
       <Content data={data} />
       <Background />
@@ -172,7 +176,7 @@ export default function ByDate({ data }: SlideProps) {
 }
 
 ByDate.config = {
-  bg: $.white,
+  bg: $.black,
   duration: 10_000,
   skipSlide: (data) =>
     Math.max(...Object.values(data.individual.spendingByDate)) === 0

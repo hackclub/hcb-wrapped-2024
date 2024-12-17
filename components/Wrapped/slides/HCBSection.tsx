@@ -24,8 +24,8 @@ export default function HCBSection({ data }: SlideProps) {
         {...$.title({
           marginBottom: $.s4,
           animate$fadeIn: {
-            args: ["fromRight"],
-            duration: "2s"
+            args: ["fromLeft"],
+            duration: "1.5s"
           }
         })}
       >
@@ -42,8 +42,8 @@ export default function HCBSection({ data }: SlideProps) {
         {...$.title({
           marginBottom: $.s3,
           animate$fadeIn: {
-            args: ["fromLeft"],
-            duration: "2s"
+            args: ["fromRight"],
+            duration: "1.5s"
           }
         })}
       >
@@ -55,5 +55,5 @@ export default function HCBSection({ data }: SlideProps) {
 }
 
 HCBSection.config = {
-  bg: $.red
+  bg: $.blue
 } satisfies SlideOptions;

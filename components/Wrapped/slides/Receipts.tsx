@@ -41,39 +41,42 @@ export default function Receipts({ data }: SlideProps) {
         height: "100%",
         paddingBottom: "80px",
         color: "white",
-        textAlign: "left"
+        textAlign: "left",
+
       })}
     >
-      <h2 {...$.title({ marginBottom: $.s3 })}>📃</h2>
+      <h2 {...$.title({ marginBottom: $.s3 })}>🧾</h2>
       <h1
-        {...$.title({ marginBottom: $.s4, fontSize: "2.8em", color: "white" })}
+        {...$.title({ marginBottom: $.s4, fontSize: "2.8em", color: "white", fontWeight: 500 })}
       >
         Receipts are important; you've got{" "}
-        <span
+        <strong
           style={{
             color: naughty ? "#fcbec5" : "#095465",
+            fontWeight: 700,
             whiteSpace: "nowrap"
           }}
         >
           {prettyLostReceiptCount} missing
-        </span>{" "}
+        </strong>{" "}
         {uploadTime == 0 ? null : (
           <>
-            and take on average{" "}
-            <span
+            {prettyLostReceiptCount == "none" && naughty ? "but" : "and"} take on average{" "}
+            <strong
               style={{
                 color: naughty ? "#fcbec5" : "#095465",
+                fontWeight: 700,
                 whiteSpace: "nowrap"
               }}
             >
               {formatDuration(data.individual.averageReceiptUploadTime)}
-            </span>{" "}
+            </strong>{" "}
             to upload them.
           </>
         )}
       </h1>
       <h2
-        {...$.title({
+        {...$.headline({
           marginTop: $.s3,
           color: "white",
           animate$fadeIn: {
@@ -82,7 +85,7 @@ export default function Receipts({ data }: SlideProps) {
           }
         })}
       >
-        <i>That's pretty {naughty ? "naughty" : "nice"} of you?</i>
+        <i>You're on the {naughty ? "naughty" : "nice"} list!</i>
       </h2>
       <Background />
     </div>

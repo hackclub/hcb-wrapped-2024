@@ -2,5 +2,5 @@
 
 cd "$(dirname "$0")"
 npm version patch
-npm publish
+npm publish --tag beta
 echo "Version patched!"

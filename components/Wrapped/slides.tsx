@@ -18,6 +18,7 @@ import type { WrappedData, OrgData } from "./utils/data";
 import type { SlideProps, SlideOptions } from "./internals/slidesHelper";
 import CardGrants from "./slides/CardGrants";
 import Reimbursements from "./slides/Reimbursements";
+import BestFriend from "./slides/BestFriend";
 
 function deterministicShuffle(seed: string, array: any[]) {
   let intSeed = 0;
@@ -98,6 +99,7 @@ export function generateSlidesOrder(data: WrappedData) {
     CardGrants,
     Receipts,
     Reimbursements,
+    BestFriend,
     WordCloud,
     Hometown,
     ...orgSlides,

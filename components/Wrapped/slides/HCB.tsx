@@ -89,7 +89,7 @@ export default function HCB({ data }: SlideProps) {
           {...$({
             margin: `${$.s3} auto`,
             marginBottom: "0px",
-            fontSize: "0.9em",
+            fontSize: "0.8em",
             width: "80%",
             color: "white",
             textAlign: "center"

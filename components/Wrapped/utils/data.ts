@@ -62,6 +62,11 @@ export interface IndividualData {
     cardGrantAmount: number;
     reimbursementCount: number;
     reimbursementAmount: number;
+    bestFriend: {
+        name: string;
+        profile_picture: string;
+        comments: number;
+    } | null;
 }
 
 export interface OrgData {

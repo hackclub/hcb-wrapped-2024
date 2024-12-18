@@ -27,7 +27,7 @@ function useTimedState<T>(callback: { [key: number]: T }, initial: T) {
   return [state, setState];
 }
 
-function useTimedValue<T>(
+export function useTimedValue<T>(
   callback: (time: number) => T,
   initial: T,
   frequency: number = 500,

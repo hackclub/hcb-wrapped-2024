@@ -91,7 +91,7 @@ const OnePager = React.forwardRef((props, ref) => {
         </div>
         <div
           style={{
-            background: "white",
+            background: "black",
             borderRadius: "8px",
             display: "flex",
             justifyContent: "center",

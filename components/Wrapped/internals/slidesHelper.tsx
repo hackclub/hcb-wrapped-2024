@@ -85,12 +85,13 @@ export default function Slides({ data }: { data: WrappedData }) {
       }
     });
   }, []);
+  console.log({ padding })
 
   return (
     <>
       {padding ? (
         <button
-          style={{ marginRight: 10, height: "50px", width: "50px" }}
+          style={{ marginRight: (432 * (scale - 1)) / 2 + 20, height: "50px", width: "50px" }}
           onClick={handlePrev}
         >
           &#x25C0;
@@ -99,7 +100,7 @@ export default function Slides({ data }: { data: WrappedData }) {
         <>
           <button
             style={{
-              marginLeft: 10,
+              marginLeft: (432 * (scale - 1)) / 2 + 20,
               height: "50px",
               width: "50px",
               display: "flex",
@@ -224,7 +225,7 @@ export default function Slides({ data }: { data: WrappedData }) {
       {padding ? (
         !(index == slides.length - 1) ? (
           <button
-            style={{ marginLeft: 10, height: "50px", width: "50px" }}
+            style={{ marginLeft: (432 * (scale - 1)) / 2 + 20, height: "50px", width: "50px" }}
             onClick={handleNext}
           >
             &#x25B6;
@@ -233,7 +234,7 @@ export default function Slides({ data }: { data: WrappedData }) {
           <>
             <button
               style={{
-                marginLeft: 10,
+                marginLeft: (432 * (scale - 1)) / 2 + 20,
                 height: "50px",
                 width: "50px",
                 display: "flex",

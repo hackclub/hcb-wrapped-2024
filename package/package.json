@@ -1,5 +1,5 @@
 {
-    "name": "@hackclub/hcb-wrapped",
+    "name": "@hcb.gg/wrapped",
     "version": "2024.0.0-beta.1",
     "description": "",
     "main": "dist/index.js",

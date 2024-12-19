@@ -26,7 +26,7 @@ export default function Background({
     width: 800vw;
     height: 800vh;
     left: 0px;
-    transform: rotate(20deg) translate(-25%, -25%);
+    transform: rotate(20deg) translate(-50%, -25%);
   `;
   return (
     <style

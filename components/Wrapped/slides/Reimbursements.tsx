@@ -36,6 +36,5 @@ bgImage: `url("https://cloud-lsz94pth8-hack-club-bot.vercel.app/0frame_2.svg")`,
 cache: () => ["https://cloud-lsz94pth8-hack-club-bot.vercel.app/0frame_2.svg"],
   duration: 10_000,
   skipSlide: (data) =>
-    isEmpty(data.individual.spendingByMerchant) ||
-    isEmpty(data.individual.spendingByCategory)
+    isEmpty(data.individual.reimbursementAmount)
 } satisfies SlideOptions;

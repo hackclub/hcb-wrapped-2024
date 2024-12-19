@@ -19,7 +19,11 @@ const additionalData: {
     color: $.blue,
     name: "PayPal"
   },
-  AMAZON: {
+  "SP WCPRODUCTS": {
+    image: "https://metoree.s3.ap-northeast-1.amazonaws.com/img/companies/logo/42128.png",
+    name: "WestCoast Products",
+  },
+  Amazon: {
     image: "https://wisdom-stone.com/wp-content/uploads/amazon-logo.png",
     color: $.steel
   },
@@ -29,7 +33,7 @@ const additionalData: {
     color: $.stickermule,
     name: "Sticker Mule"
   },
-  "FIRST FOR INSPIRATION & R": {
+  FIRST: {
     image: "https://cloud-6ik9jo5u6-hack-club-bot.vercel.app/0image.png",
     color: $.red,
     name: "FIRST Robotics"
@@ -38,12 +42,12 @@ const additionalData: {
     image: "https://cloud-161bscnw9-hack-club-bot.vercel.app/0image.png",
     color: $.orange
   },
-  GOBILDA: {
+  goBILDA: {
     image: "https://cloud-m4ohq90s7-hack-club-bot.vercel.app/0image_1__4_.png",
     color: $.yellow,
     name: "goBILDA"
   },
-  "ANDY MARK INC": {
+  AndyMark: {
     image: "https://cloud-ci8kpp8oi-hack-club-bot.vercel.app/0image_2__5_.png",
     color: "#2E3192",
     name: "AndyMark"

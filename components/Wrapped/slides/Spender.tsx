@@ -52,10 +52,9 @@ export default function Spender({ data }: SlideProps) {
             color: "#000000bb"
           }}
           dataStyle={{
-            minHeight: "140px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            fontSize: "42px",
+            marginTop: "3px",
+            marginBottom: "3px"
           }}
         />
         <HCBStat
@@ -83,6 +82,11 @@ export default function Spender({ data }: SlideProps) {
               delay: "150ms"
             },
             color: "#ffffffcc"
+          }}
+          dataStyle={{
+            fontSize: "38px",
+            marginTop: "3px",
+            marginBottom: "3px"
           }}
         />
         {data.individual.ranking <= 0.07 ? ( // Top 7% of spenders

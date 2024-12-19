@@ -35,5 +35,5 @@ CardGrants.config = {
 bgImage: `url("https://cloud-3d7o2aqrb-hack-club-bot.vercel.app/0frame_1__15_.svg")`,
   duration: 10_000,
   skipSlide: (data) =>
-    isEmpty(data.individual.cardGrantAmount)
+    data.individual.cardGrantAmount == 0
 } satisfies SlideOptions;

@@ -38,7 +38,7 @@ export default function BestFriend({ data, isPaused }: SlideProps) {
         images={images}
         speed={[snowflakeSpeed - 0.5, snowflakeSpeed + 0.5]}
         radius={[30, 80]}
-        snowflakeCount={75}
+        snowflakeCount={15}
         style={{
           animationPlayState: "paused",
           opacity: 1

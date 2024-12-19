@@ -154,7 +154,7 @@ export default function HCBTopMerchants({ data }: SlideProps) {
           </h1>
           <p {...$.lead({ color: "white", marginTop: $.s1 })}>
             HCB cards were used at{" "}
-            {Object.keys(data.hcb.merchantCount).toLocaleString()}{" "}
+            {data.hcb.merchantCount.toLocaleString()}{" "}
             different merchants over the past year.
           </p>
         </div>

@@ -99,6 +99,7 @@ export interface HCBData {
     spendingByLocation: SpendingByLocation;
     spendingByCategory: SpendingByCategory;
     spendingByMerchant: SpendingByMerchant;
+    merchantCount: number;
     spendingByDate: SpendingByDate;
 }
 
@@ -529,7 +530,8 @@ export function generateTestData() {
         spendingByDate: {},
         spendingByLocation: {},
         spendingByCategory: {},
-        spendingByMerchant: {}
+        spendingByMerchant: {},
+        merchantCount: getRandomArbitrary(2000, 9000),
     };
 
     hcb.spendingByDate = generateSpendingByDate(hcb.spent);

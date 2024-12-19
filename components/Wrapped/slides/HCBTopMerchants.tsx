@@ -22,6 +22,7 @@ const additionalData: {
   "SP WCPRODUCTS": {
     image: "https://metoree.s3.ap-northeast-1.amazonaws.com/img/companies/logo/42128.png",
     name: "WestCoast Products",
+    color: $.blue
   },
   Amazon: {
     image: "https://wisdom-stone.com/wp-content/uploads/amazon-logo.png",
@@ -208,6 +209,12 @@ export default function HCBTopMerchants({ data }: SlideProps) {
             "AMAZON MARKETPLACE": 0,
             "AMAZON MARKETPLACE AU": 0,
             "AMAZON.CA PRIME MEMBER": 0,
+            "PAYPAL":
+              data.hcb.spendingByMerchant["PAYPAL"] +
+              data.hcb.spendingByMerchant["PayPal Business"] +
+              data.hcb.spendingByMerchant["PayPal Personal"],
+            "PayPal Business": 0,
+            "PayPal Personal": 0,
           })
             .sort((a, b) => b[1] - a[1])
             .slice(0, 5)

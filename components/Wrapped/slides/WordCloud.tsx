@@ -60,7 +60,7 @@ export default function WordCloud({ data }: SlideProps) {
           })}
           id="input"
         >
-          You used lots of
+          You and your teammates used lots of
         </h2>
       </div>
       <div

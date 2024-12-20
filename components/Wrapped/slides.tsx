@@ -60,7 +60,7 @@ export function generateSlidesOrder(data: WrappedData) {
           data.organizations[b].spendingByUser[data.individual.id] -
           data.organizations[a].spendingByUser[data.individual.id]
       )
-      .slice(0, 3)
+      .slice(0, 5)
       .map((org, index) => {
         function OrgSlide({ data }: SlideProps) {
           return (

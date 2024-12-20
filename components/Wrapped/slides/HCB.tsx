@@ -64,6 +64,7 @@ export default function HCB({ data }: SlideProps) {
               label="new organizations"
               background={$.yellow}
               isNumber
+              labelStyle={{ fontSize: "0.8em" }}
             />
             <HCBStat
               data={data.hcb.users.new}

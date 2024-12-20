@@ -1,6 +1,6 @@
 {
     "name": "@hcb.gg/wrapped",
-    "version": "2024.0.4",
+    "version": "2024.0.5",
     "description": "",
     "main": "dist/index.js",
     "files": [

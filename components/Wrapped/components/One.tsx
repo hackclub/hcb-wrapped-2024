@@ -227,7 +227,7 @@ const OnePager = React.forwardRef((props, ref) => {
         >
           <h1 {...$.title({ fontSize: "1.5em", color: "white" })}>
             By spending{" "}
-            {USDollarNoCents.format(
+            {(data.individual.spendingByMerchant && Object.keys(data.individual.spendingByMerchant).length > 0) ? USDollarNoCents.format(
               Math.abs(
                 (Object.values(
                   Object.entries(data.individual.spendingByMerchant)
@@ -235,14 +235,14 @@ const OnePager = React.forwardRef((props, ref) => {
                     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
                 )[0] as number) / 100
               )
-            )}
+            ) : "money"}
             , they kept{" "}
             {
-              Object.keys(
+              (data.individual.spendingByMerchant && Object.keys(data.individual.spendingByMerchant).length > 0) ? Object.keys(
                 Object.entries(data.individual.spendingByMerchant)
                   .sort(([, a], [, b]) => b - a)
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-              )[0]
+              )[0] : "a store"
             }{" "}
             in business this year.
           </h1>
@@ -261,15 +261,15 @@ const OnePager = React.forwardRef((props, ref) => {
         >
           <h1 {...$.title({ fontSize: "1.5em", color: "white" })}>
             Their favorite type of business was{" "}
-            {prettifyCategory(
+            {(data.individual.spendingByCategory && Object.keys(data.individual.spendingByCategory).length > 0) ? prettifyCategory(
               Object.keys(
                 Object.entries(data.individual.spendingByCategory)
                   .sort(([, a], [, b]) => b - a)
                   .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
               )[0]
-            )}
+            ) : "unknown"}
             . They spent{" "}
-            {USDollarNoCents.format(
+            {(data.individual.spendingByCategory && Object.keys(data.individual.spendingByCategory).length > 0) ? USDollarNoCents.format(
               Math.abs(
                 (Object.values(
                   Object.entries(data.individual.spendingByCategory)
@@ -277,7 +277,7 @@ const OnePager = React.forwardRef((props, ref) => {
                     .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
                 )[0] as number) / 100
               )
-            )}{" "}
+            ) : "money"}{" "}
             with them.
           </h1>
         </div>

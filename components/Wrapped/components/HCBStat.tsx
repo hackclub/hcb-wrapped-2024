@@ -13,7 +13,8 @@ export default function HCBStat({
   style$,
   dataStyle = {},
   lineClamp,
-  setHeight
+  setHeight,
+  labelStyle = {}
 }: {
   data: string | number;
   label?: string;
@@ -94,7 +95,8 @@ export default function HCBStat({
           <b
             {...$({
               fontSize: "0.9em",
-              fontWeight: 500
+              fontWeight: 500,
+              ...labelStyle
             })}
           >
             {label}

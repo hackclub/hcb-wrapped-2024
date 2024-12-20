@@ -11,11 +11,14 @@ import { USDollarNoCents } from "../utils/formatter";
 const OnePager = React.forwardRef((props, ref) => {
   //@ts-ignore
   const data = props.data as WrappedData;
-  let location = Object.keys(
-    Object.entries(data.individual.spendingByLocation)
-      .sort(([, a], [, b]) => b - a)
-      .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
-  )[0].split(" - ");
+  let location;
+  try {
+    location = Object.keys(
+      Object.entries(data.individual.spendingByLocation)
+        .sort(([, a], [, b]) => b - a)
+        .reduce((r, [k, v]) => ({ ...r, [k]: v }), {})
+    )[0].split(" - ");
+  } catch (err) {}
   const uploadTime = data.individual.averageReceiptUploadTime || 0;
   const prettyLostReceiptCount =
     data.individual.lostReceiptCount == 0
@@ -138,7 +141,7 @@ const OnePager = React.forwardRef((props, ref) => {
             padding: "8px"
           }}
         >
-          They became a local hero in {location.reverse()[0]}.
+          {location ? <>They became a local hero in {location.reverse()[0]}.</> : <>Come back next year!</>}
         </div>
         <div
           style={{

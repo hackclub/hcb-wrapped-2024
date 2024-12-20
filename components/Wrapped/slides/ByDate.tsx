@@ -167,7 +167,7 @@ export default function ByDate({ data }: SlideProps) {
           color: $.white
         })}
       >
-        You went on a shopping spree with a <strong {...$({ color: $.red })}>{longestConsecutiveDates(Object.entries(data.individual.spendingByDate).filter(([k, v]) => v > 0).map(([k]) => k))} day</strong> spending streak!
+        You went on a shopping spree with a <strong {...$({ color: $.blue })}>{longestConsecutiveDates(Object.entries(data.individual.spendingByDate).filter(([k, v]) => v > 0).map(([k]) => k))} day</strong> spending streak!
       </h1>
       <Content data={data} />
       <Background />

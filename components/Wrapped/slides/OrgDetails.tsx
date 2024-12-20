@@ -202,7 +202,7 @@ export default function OrgDetails({
           data={findMonthWithMaxAbsoluteSum(organization.spendingByDate)}
           topLabel="Your team spent the most in"
           background={shuffledBackgrounds[2]}
-          fontSize={"1.7em"}
+          fontSize={"1.6em"}
           style$={{
             animate$fadeIn: {
               args:

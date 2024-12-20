@@ -48,6 +48,7 @@ export default function OrgDetails({
   organization: OrgData & { name: string };
   position: number;
 }) {
+  position = position % 3;
   const wrapperRef = useRef();
   const otherRef = useRef();
 

@@ -47,7 +47,7 @@ export default function HCB({ data }: SlideProps) {
           />
           <div style={{ position: "relative" }}>
             <img
-              src="https://cloud-h5eqmo2ac-hack-club-bot.vercel.app/0frame_2__24_.png"
+              src="https://cloud-7nlutpvx2-hack-club-bot.vercel.app/0frame_2__25_.png"
               style={{ borderRadius: "12px" }}
             />
           </div>
@@ -96,7 +96,8 @@ HCB.config = {
   bgImage: `linear-gradient(rgba(37,36,41,0.5) 0%, rgba(37,36,41,0.85) 75%), url(https://cloud-m82c27qbt-hack-club-bot.vercel.app/0img_4077.jpg)`,
   cache: (data) => [
     "https://cloud-q1u33t4vk-hack-club-bot.vercel.app/0amount.png",
-    "https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg"
+    "https://cloud-e4hjosvw9-hack-club-bot.vercel.app/2outernet-110.jpeg",
+    "https://cloud-7nlutpvx2-hack-club-bot.vercel.app/0frame_2__25_.png"
   ],
   duration: 15_000
 } satisfies SlideOptions;
